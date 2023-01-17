@@ -34,7 +34,7 @@ int main (int argc, char *argv[]) {
     string codelet_name(argv[1]);
 
     csvfile.open("../../compiler-evaluation-experiments/LoopGen/"+codelet_name+"/src_info.csv");
-    myfile.open("vrun_reduction_unique_arrays.sh");
+    myfile.open("vrun_clean_reduction.sh");
     new_file.open ("vrun_new.sh");
     string line;
     unsigned line_number = 0;
@@ -72,9 +72,9 @@ int main (int argc, char *argv[]) {
     while (std::getline(myfile, line))
     {
         line_number++;
-        if(line_number == 240){
+        if(line_number == 129){
             new_file << "   amarin_lore_prefix=\"${prefix}/compiler-evaluation-experiments/LoopGen/"+codelet_name+"/\""<<endl;
-        }else if(line_number == 2166){
+        }else if(line_number == 138){
             if(line=="	run_codelets=("){
                 for(unsigned i = 0; i < codelet_names.size(); i++){
                     new_file <<"    name2sizes["<<codelet_names[i]<<"]=\"32000:"<<array_numbers[i]<<"\""<<endl;
