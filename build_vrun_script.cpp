@@ -91,7 +91,6 @@ int main (int argc, char *argv[]) {
         }else{
             new_file << line << endl;
         }
-        
     }
     new_file.close();
     cout<<line_number;
