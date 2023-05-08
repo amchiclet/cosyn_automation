@@ -25,15 +25,21 @@ vector<string> split (string s, string delimiter) {
 
 int main (int argc, char *argv[]) {
     if(argc != 2){
-        cout<<"usage: ./a.out [codelet name]\n";
+        cout<<"usage: ./a.out [base path/codelet path] \n or    ./a.out [codelet path]\n";
         return 0;
     }
     ofstream new_file;
     ifstream myfile; 
     ifstream csvfile;
     string codelet_name(argv[1]);
-
-    csvfile.open("../../compiler-evaluation-experiments/LoopGen/"+codelet_name+"/src_info.csv");
+    string full_codelet_name;
+    bool default_base_path = (codelet_name.find('/') == std::string::npos);
+    if(!default_base_path){
+        full_codelet_name = codelet_name;
+    }else{
+        full_codelet_name = "compiler-evaluation-experiments/LoopGen/"+codelet_name;
+    }
+    csvfile.open("../../"+full_codelet_name+"/src_info.csv");
     myfile.open("vrun_clean_reduction.sh");
     new_file.open ("vrun_new.sh");
     string line;
@@ -73,7 +79,7 @@ int main (int argc, char *argv[]) {
     {
         line_number++;
         if(line_number == 129){
-            new_file << "   amarin_lore_prefix=\"${prefix}/compiler-evaluation-experiments/LoopGen/"+codelet_name+"/\""<<endl;
+            new_file << "   amarin_lore_prefix=\"${prefix}/"+full_codelet_name+"/\""<<endl;
         }else if(line_number == 138){
             if(line=="	run_codelets=("){
                 for(unsigned i = 0; i < codelet_names.size(); i++){
