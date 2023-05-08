@@ -4,6 +4,6 @@
 `.
 2. Compile: `g++ build_vrun_script.cpp -o build_vrun_script`
 
-3. Run: `./build_vrun_script [codelet name]` for example, to run [recurrence-chained-20220730](https://github.com/amchiclet/compiler-evaluation-experiments/tree/experiments/LoopGen/recurrence-chained-20220730), `[codelet name]=recurrence-chained-20220730`.
+3. Run: `./a.out [base path/codelet path]` or `./build_vrun_script [codelet name]` with default base_path = `compiler-evaluation-experiments/LoopGen/`. for example, to run [recurrence-chained-20220730](https://github.com/amchiclet/compiler-evaluation-experiments/tree/experiments/LoopGen/recurrence-chained-20220730), we can run either `./build_vrun_script recurrence-chained-20220730` or `./a.out compiler-evaluation-experiments/LoopGen/recurrence-chained-20220730`, the generated script should be the same.
 
 4. The generated vrun script will be `vrun_new.sh`.
