@@ -24,14 +24,15 @@ vector<string> split (string s, string delimiter) {
 
 
 int main (int argc, char *argv[]) {
-    if(argc != 2){
-        cout<<"usage: ./a.out [base path/codelet path] \n or    ./a.out [codelet path]\n";
+    if(argc != 3){
+        cout<<"usage: ./a.out [base path/codelet path] [output_name]\n or    ./a.out [codelet path] [output_name]\n";
         return 0;
     }
     ofstream new_file;
     ifstream myfile; 
     ifstream csvfile;
     string codelet_name(argv[1]);
+    string output_name(argv[2]);
     string full_codelet_name;
     bool default_base_path = (codelet_name.find('/') == std::string::npos);
     if(!default_base_path){
@@ -41,7 +42,7 @@ int main (int argc, char *argv[]) {
     }
     csvfile.open("../../"+full_codelet_name+"/src_info.csv");
     myfile.open("vrun_clean_reduction.sh");
-    new_file.open ("vrun_new.sh");
+    new_file.open (output_name);
     string line;
     unsigned line_number = 0;
     vector<string> titles;
